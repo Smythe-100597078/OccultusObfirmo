@@ -19,3 +19,7 @@
 #include "SDL_image.h"
 
 // Project Headers
+
+#include "States.h"
+#include "Functions.h"
+#include "Error.h"
