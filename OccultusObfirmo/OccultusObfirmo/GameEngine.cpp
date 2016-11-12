@@ -21,9 +21,7 @@ void GameEngine::display()
 {
 	// Clear Screen
 	SDL_FillRect(gScreenSurface, NULL, 0x000000);
-	SDL_Surface* gHelloWorld = NULL;
-	gHelloWorld = SDL_LoadBMP("Resources/MainMenu.bmp");
-	SDL_BlitSurface(gHelloWorld, NULL, gScreenSurface, NULL);
+	
 	gStateManager->getCurrentSate()->Display(gScreenSurface);
 
 	// Update window

@@ -6,7 +6,7 @@
 
 StateManager::StateManager()
 {
-	gCurrentSate = new MainMenuState();
+	gCurrentState = new MainMenuState();
 }
 
 StateManager::~StateManager()
@@ -38,13 +38,13 @@ void StateManager::setNextState(States aState)
 
 void StateManager::changeState()
 {
-	if (gNextState != gCurrentSate)
+	if (gNextState != gCurrentState)
 	{
-		gCurrentSate = gNextState;
+		gCurrentState = gNextState;
 	}
 }
 
 State* StateManager::getCurrentSate()
 {
-	return gCurrentSate;
+	return gCurrentState;
 }

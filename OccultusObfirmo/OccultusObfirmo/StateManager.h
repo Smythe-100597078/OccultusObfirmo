@@ -10,8 +10,9 @@ public:
 	void setNextState(States aState);
 	void changeState();
 	State* getCurrentSate();
+	State* gCurrentState;
 private:
-	State* gCurrentSate;
+	
 	State* gNextState;
 };
 
