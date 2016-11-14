@@ -19,7 +19,7 @@ void AboutState::Display(SDL_Surface* aSurface)
 	SDL_Surface* background = NULL;
 	background = SDL_LoadBMP("Resources/Creator.bmp");
 	SDL_BlitSurface(background, NULL, aSurface, NULL);
-	
+	SDL_FreeSurface(background);
 	// Display the button
 	btnBack->Display(aSurface);
 }

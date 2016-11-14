@@ -24,6 +24,8 @@ void MainMenuState::Display(SDL_Surface* aSurface)
 	background = SDL_LoadBMP("Resources/MainMenu.bmp");
 	SDL_BlitSurface(background, NULL, aSurface, NULL);
 	
+	SDL_FreeSurface(background);
+	
 	// Display the buttons
 	btnPlay->Display(aSurface);
 	btnInstruct->Display(aSurface);
