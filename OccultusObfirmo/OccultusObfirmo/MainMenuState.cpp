@@ -6,7 +6,7 @@ MainMenuState::MainMenuState()
 {
 	gId = States::STATE_MAINMENU;
 	btnPlay = new Button("Button Play", "StartBtn.bmp", 358 ,145, 75, 45);
-	btnInstruct = new Button("Button Instructions", "InstructionsBtn.bmp", 300, 210, 190, 45);
+	btnInstruct = new Button("Button Instructions", "InstructionsBtn.bmp", 300, 215, 190, 40);
 	btnCreate = new Button("Button Creator", "CreatorBtn.bmp", 335, 280, 115 ,45);
 	btnExit = new Button("Button Exit", "ExitBtn.bmp", 358, 345, 75, 45);
 
@@ -44,13 +44,17 @@ States MainMenuState::HandleEvent(SDL_Event* aEvent)
 	{
 		result = States::STATE_GAMEPLAY;
 	}
-	else if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnInstruct->getRectangle()))
+	else if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnCreate->getRectangle()))
 	{
 		result = States::STATE_ABOUT;
 	}
 	else if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnExit->getRectangle()))
 	{
 		result = States::STATE_EXIT;
+	}
+	else if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnInstruct->getRectangle()))
+	{
+		result = States::STATE_INSTRUCTIONS;
 	}
 	else
 	{

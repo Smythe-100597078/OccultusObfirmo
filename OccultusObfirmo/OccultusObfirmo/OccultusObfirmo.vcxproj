@@ -127,6 +127,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="InstructState.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Error.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="InstructState.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="State.h" />

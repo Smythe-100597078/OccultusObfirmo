@@ -2,6 +2,7 @@
 #include "StateManager.h"
 #include "MainMenuState.h"
 #include "AboutState.h"
+#include "InstructState.h"
 
 
 StateManager::StateManager()
@@ -23,12 +24,10 @@ void StateManager::setNextState(States aState)
 	case States::STATE_ABOUT:
 		gNextState = new AboutState();
 		break;
-	//case States::STATE_HELP:
-		//break;
+	case States::STATE_INSTRUCTIONS:
+		gNextState = new InstructState();
+		break;
 	//case States::STATE_GAMEPLAY:
-		//break;
-	//case States::STATE_EXIT:
-
 		//break;
 	default:
 		gNextState = new MainMenuState();
