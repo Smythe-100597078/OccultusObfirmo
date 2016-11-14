@@ -5,10 +5,10 @@
 MainMenuState::MainMenuState()
 {
 	gId = States::STATE_MAINMENU;
-	btnPlay = new Button("Button Play", "StartBtn.bmp", 358 ,145, 75, 50);
-	btnInstruct = new Button("Button Instructions", "InstructionsBtn.bmp", 20, 140, 150, 100);
-	btnCreate = new Button("Button Creator", "CreatorBtn.bmp", 20, 300, 150, 100);
-	btnExit = new Button("Button Exit", "ExitBtn.bmp", 20, 440, 150, 100);
+	btnPlay = new Button("Button Play", "StartBtn.bmp", 358 ,145, 75, 45);
+	btnInstruct = new Button("Button Instructions", "InstructionsBtn.bmp", 300, 210, 190, 45);
+	btnCreate = new Button("Button Creator", "CreatorBtn.bmp", 335, 280, 115 ,45);
+	btnExit = new Button("Button Exit", "ExitBtn.bmp", 358, 345, 75, 45);
 
 
 }

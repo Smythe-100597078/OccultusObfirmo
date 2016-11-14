@@ -5,7 +5,7 @@
 AboutState::AboutState()
 {
 	gId = States::STATE_ABOUT;
-	btnBack = new Button("Button Back", "BackBtn.bmp", 700, 550, 100, 50);
+	btnBack = new Button("Button Back", "BackBtn.bmp", 10, 10, 100, 50);
 }
 
 
@@ -20,6 +20,7 @@ void AboutState::Display(SDL_Surface* aSurface)
 	background = SDL_LoadBMP("Resources/Creator.bmp");
 	SDL_BlitSurface(background, NULL, aSurface, NULL);
 	SDL_FreeSurface(background);
+	
 	// Display the button
 	btnBack->Display(aSurface);
 }
