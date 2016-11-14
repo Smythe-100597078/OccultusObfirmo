@@ -1,32 +1,32 @@
 #include "stdafx.h"
-#include "AboutState.h"
+#include "GamePlay.h"
 
 
-AboutState::AboutState()
+GamePlay::GamePlay()
 {
-	gId = States::STATE_ABOUT;
-	btnBack = new Button("Button Back", "BackBtn.bmp", 10, 10, 100, 50);
-	
+	gId = States::STATE_INSTRUCTIONS;
+	hero = new Player("Game Hero","Hero.bmp", 400, 300, 50, 50);
+	btnBack = new Button("Button Back", "BackBtn.bmp", 715, 560, 50, 25);
 }
 
 
-AboutState::~AboutState()
+GamePlay::~GamePlay()
 {
 }
 
-void AboutState::Display(SDL_Surface* aSurface)
+void GamePlay::Display(SDL_Surface* aSurface)
 {
 	// Display the background
 	SDL_Surface* background = NULL;
-	background = SDL_LoadBMP("Resources/Creator.bmp");
+	background = SDL_LoadBMP("Resources/Level1.bmp");
 	SDL_BlitSurface(background, NULL, aSurface, NULL);
 	SDL_FreeSurface(background);
-	
-	// Display the button
+
+	hero->Display(aSurface);
 	btnBack->Display(aSurface);
 }
 
-States AboutState::HandleEvent(SDL_Event* aEvent)
+States GamePlay::HandleEvent(SDL_Event* aEvent)
 {
 	States result;
 	int x, y;
@@ -38,8 +38,7 @@ States AboutState::HandleEvent(SDL_Event* aEvent)
 	}
 	else
 	{
-		result = States::STATE_ABOUT;
+		result = States::STATE_GAMEPLAY;
 	}
-
 	return result;
 }

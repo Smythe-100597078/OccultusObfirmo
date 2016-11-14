@@ -56,6 +56,10 @@ States MainMenuState::HandleEvent(SDL_Event* aEvent)
 	{
 		result = States::STATE_INSTRUCTIONS;
 	}
+	else if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnPlay->getRectangle()))
+	{
+		result = States::STATE_GAMEPLAY;
+	}
 	else
 	{
 		result = States::STATE_MAINMENU;
