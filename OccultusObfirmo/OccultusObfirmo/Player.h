@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "Health.h"
 #include "Player.h"
+#include "Inventory.h"
 
 
 class Player : public Object
@@ -35,6 +36,8 @@ public:
 		fHealth->setHealth(x - 1);
 	}
 	Health* fHealth = new Health(3);
+
+	Inventory* inv = new Inventory();
 private:
 
 protected:

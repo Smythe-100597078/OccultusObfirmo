@@ -13,6 +13,7 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <algorithm>
 
 // SDL Libraries
 #include "SDL.h"

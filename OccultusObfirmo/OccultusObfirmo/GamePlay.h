@@ -19,5 +19,7 @@ private:
 	Player* hero;
 	Enemy* enemy;
 	Projectile* project;
+	Button* keyImage;
+	Item* key;
 
 }; 

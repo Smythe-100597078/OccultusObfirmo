@@ -9,6 +9,9 @@ GamePlay::GamePlay()
 	btnBack = new Button("Button Back", "BackBtn.bmp", 715, 560, 50, 25);
 	enemy = new Enemy("Lvl1 Enemy", "Enemy1.png", 295, 0, 88, 105);
 	project = new Projectile("Projectile", "Magic.png", hero->getX(), hero->getY(), 15, 14);
+	keyImage = new Button("Key","key.png", 50, 250, 25, 25);
+	key = new Item("Key", "..It may unlock something", new std::string[2]{ "key","key" });
+	
 }
 
 
@@ -23,10 +26,20 @@ void GamePlay::Display(SDL_Surface* aSurface)
 	background = SDL_LoadBMP("Resources/Level1.bmp");
 	SDL_BlitSurface(background, NULL, aSurface, NULL);
 	SDL_FreeSurface(background);
+	
 	if (enemy->getAlive())
 	{
 		enemy->Display(aSurface);
 	}
+	if (gFunctions->check_collision(keyImage->getRectangle(), hero->getRectangle()))
+	{
+		hero->inv->Put(key);
+		keyImage->setX(709);
+		keyImage->setY(160);
+		std::cout << "You picked up a " + key->Name() << std::endl;
+	}
+
+
 	
 	if (hero->getAlive())
 	{
@@ -50,7 +63,7 @@ void GamePlay::Display(SDL_Surface* aSurface)
 		project->setFiredStatus(false);
 		int x = enemy->fHealth->getHealth();
 		enemy->fHealth->setHealth(x - 1);
-		if (enemy->fHealth->getHealth() < 0)
+		if (enemy->fHealth->getHealth() <= 0)
 		{
 			enemy->setAlive(false);
 		}
@@ -60,21 +73,31 @@ void GamePlay::Display(SDL_Surface* aSurface)
 	if (gFunctions->check_collision(hero->getRectangle(), enemy->getRectangle()) && enemy->getAlive() && hero->getAlive())
 	{ 
 		enemy->setCollided(true);
-		if (hero->fHealth->getHealth() != 0)
+		
+		if (hero->fHealth->getHealth() > 0)
 		{
 			hero->removelife();
 			enemy->setX(295);
 			enemy->setY(0);
 
 		}
-		else
+		else if(hero->fHealth->getHealth() <= 0)
 		{
 			hero->setAlive(false);
 		}
 		
+		if (hero->fHealth->getHealth() > 0)
+		{
+			std::cout << "You have " + std::to_string(hero->fHealth->getHealth()) + " lives remaining" << std::endl;
+		}
+		if(hero->fHealth->getHealth() == 0 && hero->getAlive() == false)
+		{
+			std::cout << "You have died" << std::endl;
+		}
 	}
 	enemy->ChasePlayer(enemy, hero);
 	btnBack->Display(aSurface);
+	keyImage->Display(aSurface);
 }
 
 States GamePlay::HandleEvent()

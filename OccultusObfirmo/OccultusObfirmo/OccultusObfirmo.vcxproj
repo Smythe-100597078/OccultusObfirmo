@@ -131,6 +131,8 @@
     <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GamePlay.cpp" />
     <ClCompile Include="InstructState.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -153,6 +155,8 @@
     <ClInclude Include="GamePlay.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="InstructState.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
