@@ -30,6 +30,8 @@ private:
 
 
 	Functions* gFunctions;
+
+
 	StateManager* gStateManager;
 
 	//The window we'll be rendering to

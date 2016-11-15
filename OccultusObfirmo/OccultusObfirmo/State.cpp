@@ -21,3 +21,7 @@ States State::getID()
 {
 	return gId;
 }
+
+void State::Update()
+{
+}

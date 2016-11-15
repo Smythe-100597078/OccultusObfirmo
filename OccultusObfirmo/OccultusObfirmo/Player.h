@@ -1,6 +1,8 @@
 #pragma once
 #include "Object.h"
 #include "Health.h"
+#include "Score.h"
+#include "Experience.h"
 #include "Player.h"
 #include "Inventory.h"
 
@@ -36,7 +38,8 @@ public:
 		fHealth->setHealth(x - 1);
 	}
 	Health* fHealth = new Health(3);
-
+	Score* fScore = new Score(0);
+	Experience* fExperience = new Experience(0);
 	Inventory* inv = new Inventory();
 private:
 

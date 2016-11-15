@@ -76,6 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>F:\OccultusObfirmo\SDL2-2.0.5\include;F:\OccultusObfirmo\SDL2_ttf-2.0.14\include;F:\OccultusObfirmo\SDL2_image-2.0.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -83,6 +84,9 @@
       <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -130,6 +134,7 @@
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GamePlay.cpp" />
+    <ClCompile Include="GamePlayLevel2.cpp" />
     <ClCompile Include="InstructState.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -149,10 +154,12 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Error.h" />
+    <ClInclude Include="Experience.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GamePlay.h" />
+    <ClInclude Include="GamePlayLevel2.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="InstructState.h" />
     <ClInclude Include="Inventory.h" />
@@ -161,11 +168,15 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Score.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="States.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

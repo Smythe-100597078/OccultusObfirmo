@@ -5,12 +5,12 @@
 #include "Enemy.h"
 #include "Projectile.h"
 
-class GamePlay :
+class GamePlayLevel2 :
 	public State
 {
 public:
-	GamePlay();
-	~GamePlay();
+	GamePlayLevel2();
+	~GamePlayLevel2();
 	int dy = 0;
 	void Display(SDL_Surface* aSurface) override;
 	States HandleEvent() override;
@@ -20,7 +20,8 @@ private:
 	Player* hero;
 	Enemy* enemy;
 	Projectile* project;
+	Button* swordImage;
+	Item* sword;
 	Button* keyImage;
-	Item* key;
 
-}; 
+};

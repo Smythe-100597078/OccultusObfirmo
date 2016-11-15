@@ -5,6 +5,7 @@
 #include "InstructState.h"
 #include "GameOverState.h"
 #include "GamePlay.h"
+#include "GamePlayLevel2.h"
 
 
 StateManager::StateManager()
@@ -34,6 +35,9 @@ void StateManager::setNextState(States aState)
 		break;
 	case States::STATE_GAME_OVER:
 		gNextState = new GameOverState();
+		break;
+	case States::STATE_LEVEL_2:
+		gNextState = new GamePlayLevel2();
 		break;
 	default:
 		gNextState = new MainMenuState();

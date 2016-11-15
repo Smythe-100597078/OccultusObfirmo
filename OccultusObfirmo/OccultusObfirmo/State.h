@@ -8,6 +8,7 @@ public:
 
 	virtual void Display(SDL_Surface* aSurface) = 0;
 	virtual States HandleEvent() = 0;
+	virtual void Update();
 
 	States getID();
 private:
