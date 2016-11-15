@@ -15,6 +15,6 @@ private:
 protected:
 	Functions* gFunctions;
 	States gId;
-	SDL_Event* aEvent;
+	SDL_Event* aEvent = new SDL_Event();
 };
 

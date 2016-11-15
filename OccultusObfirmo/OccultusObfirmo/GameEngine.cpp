@@ -19,13 +19,16 @@ GameEngine::~GameEngine()
 
 void GameEngine::display()
 {
-	// Clear Screen
-	SDL_FillRect(gScreenSurface, NULL, 0x000000);
-	
-	gStateManager->getCurrentSate()->Display(gScreenSurface);
+	do
+	{
+		// Clear Screen
+		SDL_FillRect(gScreenSurface, NULL, 0x000000);
 
-	// Update window
-	SDL_UpdateWindowSurface(gWindow);
+		gStateManager->getCurrentSate()->Display(gScreenSurface);
+
+		// Update window
+		SDL_UpdateWindowSurface(gWindow);
+	} while (!exiting);
 }
 
 void GameEngine::handleEvent()
@@ -35,13 +38,17 @@ void GameEngine::handleEvent()
 
 	result = gStateManager->getCurrentSate()->HandleEvent();
 	gStateManager->setNextState(result);
+
 	if (result == STATE_EXIT)
 	{
 		exiting = true;
 		close();
 	}
 
-	gStateManager->changeState();
+	if (result != gStateManager->getCurrentSate()->getID() && result != STATE_NULL)
+	{
+		gStateManager->changeState();
+	}
 }
 
 void GameEngine::update()
@@ -52,10 +59,10 @@ void GameEngine::update()
 
 
 void GameEngine::setup()
-
 {
 	std::cout << "Initializing Engine" << std::endl;
 	init();
+	gDisplayThread = new std::thread(&GameEngine::display, this);
 }
 
 void GameEngine::init()
@@ -70,7 +77,7 @@ void GameEngine::init()
 	{
 		//Create window
 		gWindow = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
-
+		SDL_SetWindowPosition(gWindow, 444, 82);
 		if (gWindow == NULL)
 		{
 			Error::Display("Window could not be created");
@@ -86,11 +93,13 @@ void GameEngine::init()
 			}
 		}
 	}
-	
+
 }
 
 void GameEngine::close()
 {
+	gDisplayThread->join();
+
 	//Destroy window
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
@@ -110,7 +119,7 @@ void GameEngine::run()
 	std::cout << "Starting game loop" << std::endl;
 	do
 	{
-		display();
+		//display();
 		handleEvent();
 		update();
 	} while (!isExiting());

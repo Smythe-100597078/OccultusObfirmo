@@ -3,6 +3,7 @@
 #include "MainMenuState.h"
 #include "AboutState.h"
 #include "InstructState.h"
+#include "GameOverState.h"
 #include "GamePlay.h"
 
 
@@ -31,9 +32,13 @@ void StateManager::setNextState(States aState)
 	case States::STATE_GAMEPLAY:
 		gNextState = new GamePlay();
 		break;
+	case States::STATE_GAME_OVER:
+		gNextState = new GameOverState();
+		break;
 	default:
 		gNextState = new MainMenuState();
 		break;
+	
 	}
 }
 
