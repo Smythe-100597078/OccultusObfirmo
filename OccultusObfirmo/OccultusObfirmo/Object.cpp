@@ -10,6 +10,10 @@ Object::Object(std::string aName, std::string aImgName, int aX, int aY, int aW, 
 	gImageArea = new SDL_Rect();
 
 	gImage = IMG_Load(imagePath.c_str());
+	if (gImage == nullptr)
+	{
+		std::cout << SDL_GetError() << std::endl;
+	}
 	gImageArea->x = aX;
 	gImageArea->y = aY;
 	gImageArea->w = aW;

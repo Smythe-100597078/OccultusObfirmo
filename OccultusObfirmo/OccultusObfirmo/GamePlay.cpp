@@ -5,7 +5,7 @@
 GamePlay::GamePlay()
 {
 	gId = States::STATE_INSTRUCTIONS;
-	hero = new Player("Game Hero","Hero.bmp", 400, 300, 50, 50);
+	hero = new Player("Game Hero","Hero.png", 325, 540, 50, 50);
 	btnBack = new Button("Button Back", "BackBtn.bmp", 715, 560, 50, 25);
 }
 
@@ -26,19 +26,38 @@ void GamePlay::Display(SDL_Surface* aSurface)
 	btnBack->Display(aSurface);
 }
 
-States GamePlay::HandleEvent(SDL_Event* aEvent)
+States GamePlay::HandleEvent()
 {
-	States result;
-	int x, y;
-	SDL_GetMouseState(&x, &y);
+	States result = STATE_NULL;
+	bool selected = false;
 
-	if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnBack->getRectangle()))
-	{
-		result = States::STATE_MAINMENU;
-	}
-	else
-	{
-		result = States::STATE_GAMEPLAY;
-	}
+	do {
+		while (SDL_PollEvent(aEvent) != 0)
+		{
+			if (aEvent->type == SDL_QUIT)
+			{
+				result = STATE_EXIT;
+				selected = true;
+			}
+			else
+			{
+				if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(btnBack->getRectangle()))
+				{
+					result = STATE_MAINMENU;
+					selected = true;
+				}
+			}
+
+			if (gFunctions->buttonDown(aEvent, SDLK_UP))
+			{
+				int dy = hero->getY();
+				hero->setY(dy--);
+				std::cout << dy << std::endl;
+			}
+
+
+		}
+	} while (!selected);
+
 	return result;
 }

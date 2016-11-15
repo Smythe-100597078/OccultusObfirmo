@@ -18,8 +18,16 @@ public:
 	void display();
 
 	bool isExiting();
+	void run();
 private:
 	bool exiting;
+
+	//display thread
+	std::thread* gDisplayThread;
+
+	//update thread
+	std::thread* gUpdateThread;
+
 
 	Functions* gFunctions;
 	StateManager* gStateManager;

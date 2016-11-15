@@ -7,7 +7,7 @@ public:
 	~State();
 
 	virtual void Display(SDL_Surface* aSurface) = 0;
-	virtual States HandleEvent(SDL_Event* aEvent) = 0;
+	virtual States HandleEvent() = 0;
 
 	States getID();
 private:
@@ -15,5 +15,6 @@ private:
 protected:
 	Functions* gFunctions;
 	States gId;
+	SDL_Event* aEvent;
 };
 

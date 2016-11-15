@@ -25,20 +25,29 @@ void InstructState::Display(SDL_Surface* aSurface)
 	btnBack->Display(aSurface);
 }
 
-States InstructState::HandleEvent(SDL_Event* aEvent)
+States InstructState::HandleEvent()
 {
-	States result;
-	int x, y;
-	SDL_GetMouseState(&x, &y);
+	States result = STATE_NULL;
+	bool selected = false;
 
-	if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnBack->getRectangle()))
-	{
-		result = States::STATE_MAINMENU;
-	}
-	else
-	{
-		result = States::STATE_INSTRUCTIONS;
-	}
+	do {
+		while (SDL_PollEvent(aEvent) != 0)
+		{
+			if (aEvent->type == SDL_QUIT)
+			{
+				result = STATE_EXIT;
+				selected = true;
+			}
+			else
+			{
+				if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(btnBack->getRectangle()))
+				{
+					result = STATE_MAINMENU;
+					selected = true;
+				}
+			}
+		}
+	} while (!selected);
 
 	return result;
 }

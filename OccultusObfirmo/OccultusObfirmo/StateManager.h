@@ -6,6 +6,7 @@ class StateManager
 public:
 	StateManager();
 	~StateManager();
+	
 
 	void setNextState(States aState);
 	void changeState();
@@ -14,5 +15,8 @@ public:
 private:
 	
 	State* gNextState;
+
+protected:
+	
 };
 

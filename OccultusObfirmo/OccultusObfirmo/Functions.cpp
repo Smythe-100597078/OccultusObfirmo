@@ -11,9 +11,12 @@ Functions::~Functions()
 {
 }
 
-bool Functions::isOver(int& x, int& y, SDL_Rect& aArea)
+bool Functions::isOver(const SDL_Rect& aArea)
 {
+	int x, y;
 	bool result = false;
+
+	SDL_GetMouseState(&x, &y);
 
 	if ((x > aArea.x) && (x < aArea.x + aArea.w) && (y > aArea.y) && (y < aArea.y + aArea.h))
 	{
@@ -30,6 +33,25 @@ bool Functions::leftMouseButtonClicked(SDL_Event* aEvent)
 	if (aEvent->type == SDL_MOUSEBUTTONDOWN && aEvent->button.button == SDL_BUTTON_LEFT)
 	{
 		result = true;
+	}
+
+	return result;
+}
+
+
+bool Functions::buttonDown(SDL_Event* aEvent, SDL_Keycode aCode)
+{
+	bool result = false;
+
+	if (aEvent->type == SDL_KEYDOWN && aEvent->key.keysym.sym == aCode)
+	{
+		std::cout << "Key Down" << std::endl;
+		result = true;
+	}
+	else if (aEvent->type == SDL_KEYUP && aEvent->key.keysym.sym == aCode)
+	{
+		std::cout << "Key Up" << std::endl;
+		result == false;
 	}
 
 	return result;

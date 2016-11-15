@@ -14,3 +14,4 @@ void Player::Display(SDL_Surface* aSurface)
 Player::~Player()
 {
 }
+

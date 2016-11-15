@@ -30,40 +30,31 @@ void GameEngine::display()
 
 void GameEngine::handleEvent()
 {
-	SDL_Event* e = new SDL_Event();
 
-	//Handle events on queue
-	while (SDL_PollEvent(e) != 0)
+	States result = STATE_NULL;
+
+	result = gStateManager->getCurrentSate()->HandleEvent();
+	gStateManager->setNextState(result);
+	if (result == STATE_EXIT)
 	{
-		//User requests quit
-		if (e->type == SDL_QUIT)
-		{
-			exiting = true;
-			close();
-		}
-		else
-		{
-			States result = gStateManager->getCurrentSate()->HandleEvent(e);
-			if (result == States::STATE_EXIT)
-			{
-				exiting = true;
-			}
-			else
-			{
-				gStateManager->setNextState(result);
-			}
-		}
+		exiting = true;
+		close();
 	}
+
+	gStateManager->changeState();
 }
 
 void GameEngine::update()
 {
+
 	gStateManager->changeState();
 }
 
 
 void GameEngine::setup()
+
 {
+	std::cout << "Initializing Engine" << std::endl;
 	init();
 }
 
@@ -95,6 +86,7 @@ void GameEngine::init()
 			}
 		}
 	}
+	
 }
 
 void GameEngine::close()
@@ -111,4 +103,15 @@ void GameEngine::close()
 bool GameEngine::isExiting()
 {
 	return exiting;
+}
+
+void GameEngine::run()
+{
+	std::cout << "Starting game loop" << std::endl;
+	do
+	{
+		display();
+		handleEvent();
+		update();
+	} while (!isExiting());
 }
