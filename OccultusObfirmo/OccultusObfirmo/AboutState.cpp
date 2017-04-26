@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "AboutState.h"
 
-
+// This is the About State
 AboutState::AboutState()
 {
 	gId = States::STATE_ABOUT;
